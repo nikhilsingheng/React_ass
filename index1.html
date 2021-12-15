@@ -1,0 +1,33 @@
+<ul id='nik'>
+    <li>title</li>
+    <li>author</li>
+    <li>comments</li>
+    <li>points</li>
+
+</ul>
+<script>
+    function sortList(){
+        var list, i, switch1, b , switch2;
+        list = document.getElementById("nik");
+           switch1=true;
+
+        while(switch1){
+            switch1 = false;
+        b = list.getElementsByTagName("LI");
+
+        for (i = 0; i< (b.length - 1); i++)
+        {
+            switch2 = false;
+
+        if(b[i].innerHTML.toLocaleLowerCase()> b[i + 1].innerHTML.toLocaleLowerCase()){
+            switch2 = true;
+             break;
+        }
+        }
+         if(switch2){
+             b[i].parentNode.insertBefore(b[i+1], b[i])
+              switch1= true
+         }
+        }
+    }
+</script>

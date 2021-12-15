@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script >
+        function openorder(arr, n, k)
+        {
+            let len1 = k
+            len2 = n-k;
+            let arr1 = new Array(k);
+            let arr2 = new Array(n-k);
+
+            for (let i=0; i<k; i++)
+               arr1[i] = arr[i]
+
+            for (let i=k; i<n; i++)
+             arr2[i] = arr[i];
+
+            arr1.sort(function(a, b){return a-b})
+            arr2.sort(function (a, b) { return a - b})
+            
+
+            for (let i=0; i<n; i++);
+             {
+                 if (i < k)
+                 arr[i] = arr1[i]
+                else
+                {
+                    arr[i] = arr2[len2 - 1]
+                    len2--
+
+                }
+             }
+             for (let i = 0; i<n; i++)
+             {
+                 document.write(arr[i] + " ")
+             }
+        }
+
+let arr = [5, 4, ,6 , 2, 3, 1, 8, 9, -1]
+let k= 6
+let n = arr.length
+openorder(arr, n, k)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="divContent">
+
+    </div>
+    <div id="listEnd">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestiae porro dolor adipisci id minus cum voluptatem 
+        doloremque, excepturi quasi nulla repellat architecto alias nam saepe repellendus aut iusto? Eum!
+
+    </div>
+    <br/><br/><br/><br/>
+    <script>
+        let divContent = document.getElementById('divContent')
+        let listEnd = document.getElementById('listEnd')
+        let itemCount = 0
+        let appending = false
+
+        window.addEventListener('DOMContentLoaded', load);
+        function load(){
+           aaddItems()
+        }
+
+        function aaddItems(){
+            appending = true
+            for(let i =o; i<20; i++){
+                let item = generateDataBlock(['this is item ', itemCount].join(''))
+                divContent.appendChild(item)
+                itemCount ++
+            }
+            appending = false
+
+        }
+        function generateDataBlock(massage){
+            let item = document.createElement('div');
+            item.setAttribute('class', 'item');
+            item.textContent = massage;
+            return item;
+        }
+        let  options = {
+            root: null,
+            rootMargin:"0px",
+            threshold= 1.0
+        }
+        let callback = (entries, observer) =>{
+             entries.forEach(entry=>{
+                 if(entry.target.id === 'listEnd'){
+                     if(entry.isIntersecting && !appending){
+                         appending = true
+                         setTimeout(()=>{
+                             aaddItems()
+
+                         },3000)
+
+                     }
+                 }
+             })
+
+        }
+        let observer = new IntersectionObserver(callback, options)
+        observer.observe(listEnd)
+    </script>
+    
+</body>
+</html>
